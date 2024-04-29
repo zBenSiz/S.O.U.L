@@ -1,3 +1,7 @@
+
+##### S.O.U.L #####
+         
+                            ##############  Bibliotecas ###############
 import tkinter as tk
 import speech_recognition as sr
 import pyttsx3
@@ -9,8 +13,11 @@ import random
 from PIL import Image, ImageTk
 import threading
 
+
+                        ############## Variables Importantes #################
+
 # Nombre del asistente
-name = 'SOUL'  # ¡Recuerda cambiar esto al nombre de tu asistente!
+name = 'soul' 
 
 # Permite reconocer la voz
 listener = sr.Recognizer()
@@ -18,7 +25,7 @@ listener = sr.Recognizer()
 engine = pyttsx3.init()
 
 # Traducción de los meses
-spanish_month = {
+español_mes = {
     'January': 'Enero',
     'February': 'Febrero',
     'March': 'Marzo',
@@ -46,6 +53,9 @@ wikipedia.set_lang('es')
 
 # Bandera para controlar el saludo inicial
 saludo_inicial = False
+
+
+                        ############### METODOS IMPORTANTES #################
 
 # Método que permite al asistente hablar
 def talk(text):
@@ -124,8 +134,8 @@ def run():
 
     # INDICA EL MES
     elif 'mes' in recognizer:
-        spanish_month = time.datetime.now().strftime('%B')
-        talk('Estamos en el mes de ' + str(spanish_month))
+        español_mes_mes = time.datetime.now().strftime('%B')
+        talk('Estamos en el mes de ' + str(español_mes))
 
     # INDICA EL AÑO
     elif 'año' in recognizer:
@@ -221,14 +231,18 @@ def random_choice():
 def on_button_click():
     threading.Thread(target=run).start()
 
-############### MICROFONO #########################
-# Crear una ventana Tkinter
+
+            ################# Interfaz Gráfica #################
+
+# Crear una ventana Tkinter #
 root = tk.Tk()
 root.title("S.O.U.L")
 root.geometry("800x800")
 
 root.resizable(False, False)
-########## Img Microfono ############
+
+# Img Microfono # 
+
 microfono_img = Image.open("micro.png")
 microfono_img = microfono_img.resize((200, 200))  # Ajustar el tamaño si es necesario
 microfono_img = ImageTk.PhotoImage(microfono_img)
@@ -236,12 +250,15 @@ microfono_img = ImageTk.PhotoImage(microfono_img)
 primera_label = tk.Label(root, image=microfono_img)
 primera_label.place(relx=0.5, rely=0.5, anchor="s") 
 
-# Método para manejar la acción del botón
-# Definido anteriormente como on_button_click
+# Método para manejar la acción del botón #
+# Definido anteriormente como on_button_click #
 
-# Crear un botón en la ventana
+# Crear un botón en la ventana #
 button = tk.Button(root, image=microfono_img, command=on_button_click, bd=0)  # bd=0 para eliminar el borde del botón
 button.place(x=300, y=500)  # Posicionar en la parte inferior, ajusta las coordenadas según sea necesario
+
+
+# Imagen de S.O.U.L #
 
 segunda_img = Image.open("gh-afk.gif")
 segunda_img = segunda_img.resize((400, 400))  # Ajustar el tamaño si es necesario
